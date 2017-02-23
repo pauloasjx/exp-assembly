@@ -1,21 +1,21 @@
 
 section .data
-	text db "Hello World!", 10
+	text db "Hello World!", 10 ;define bytes with the message Hello World!\n
 
 section .text
 	global _start
 
 _start:
-	call _print
-	
-	mov rax, 60
-	mov rdi, 0
+	call _print ;call print block
+
+	mov rax, 60 ;syscall exit operation
+	mov rdi, 0 ;errors
 	syscall
 
 _print:
-	mov rax, 1
-	mov rdi, 1
-	mov rsi, text
-	mov rdx, 14
+	mov rax, 1 ;syscall write operation
+	mov rdi, 1 ;output argument
+	mov rsi, text ;output buffer
+	mov rdx, 14 ;buffer size
 	syscall
-	ret
+	ret ;return
